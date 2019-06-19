@@ -118,6 +118,32 @@
 .article-open {
   height: 400px;
 }
+.createArticleDiv {
+  margin-top: 5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+.createArticleDiv .createArticleBtn {
+  width: 20rem;
+  height: 3rem;
+  font-size: 1.5rem;
+  background-color: aquamarine;
+  border-radius: 0.5rem;
+  outline: 0 none;
+}
+.createArticleDiv .articleFormSection {
+  display: none;
+  margin-top: 1rem;
+}
+.createArticleDiv .articleFormSection .bodyInput {
+  height: 5rem;
+  width: 20rem;
+}
+.createArticleDiv .articleFormShow {
+  display: block;
+}
 html,
 body {
   margin: 0;

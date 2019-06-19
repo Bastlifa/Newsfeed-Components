@@ -60,3 +60,72 @@ class Article {
 let articles = document.querySelectorAll(".article");
 articles.forEach(elem => new Article(elem));
 
+let createArticleBtn = document.querySelector(".createArticleBtn");
+createArticleBtn.addEventListener("click", function()
+{
+  document.querySelector(".articleFormSection").classList.toggle("articleFormShow");
+  createArticleBtn.textContent === "Create Article" ? createArticleBtn.textContent = "Cancel" : createArticleBtn.textContent = "Create Article";
+})
+
+
+
+function ArticleMaker(titleStr, dateStr, bodyStr)
+{
+  this.title = titleStr;
+  this.date = dateStr;
+  this.body = bodyStr;
+}
+ArticleMaker.prototype.makeDomEl = function()
+{
+  let articleDiv = document.createElement("div");
+  articleDiv.classList.add("article");
+
+  let articleH2 = document.createElement("h2");
+  articleH2.textContent = this.title;
+  articleDiv.appendChild(articleH2);
+
+  let articleDateP = document.createElement("p");
+  articleDateP.classList.add("date");
+  articleDateP.textContent = this.date;
+  articleDiv.appendChild(articleDateP);
+  
+  let aBodyParas = this.body.split("\n");
+  for(let i=0; i<aBodyParas.length; i++)
+  {
+    let articlePara = document.createElement("p");
+    articlePara.textContent = aBodyParas[i];
+    articleDiv.appendChild(articlePara);
+  }
+
+  let expandSpan = document.createElement("span");
+  expandSpan.classList.add("expandButton");
+  expandSpan.textContent = "a"
+  articleDiv.appendChild(expandSpan);
+
+  let readSpan = document.createElement("span");
+  readSpan.classList.add("readButton");
+  readSpan.classList.add("readBtnHide");
+  articleDiv.appendChild(readSpan);
+  console.log('a')
+  document.querySelector(".articles").appendChild(articleDiv);
+  return articleDiv;
+}
+
+
+let submitArticleBtn = document.querySelector(".articleSubmit");
+
+submitArticleBtn.addEventListener("click", function()
+{
+  event.preventDefault();
+  let bodyInput = document.querySelector(".bodyTextArea");
+  let dateInput = document.querySelector(".articleDateInput");
+  let titleInput = document.querySelector(".articleTitleInput");
+
+  if(bodyInput.value == "" || dateInput.value == "" || titleInput.value == "")
+  {alert("missing inputs for new article"); return;}
+  
+  tempArticle = new ArticleMaker(titleInput.value, dateInput.value, bodyInput.value);
+  new Article(tempArticle.makeDomEl());
+  bodyInput.value = "", dateInput.value = "", titleInput.value = "";
+})
+
