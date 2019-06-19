@@ -19,6 +19,26 @@ class Article {
   {
     // Using our reference to the domElement, toggle a class to expand or hide the article.
     this.domElement.classList.toggle("article-open");
+    if(Array.from(this.domElement.classList).includes("article-open"))
+    {
+      TweenMax.set(this.domElement, 
+      {
+        height: "auto"
+      });
+      TweenMax.from(this.domElement, 1, 
+      {
+        height: 50
+      });
+      console.log(this.domElement.classList)
+    }
+    else
+    {
+      TweenMax.to(this.domElement, 1, 
+      {
+        height: 50
+      });
+      console.log(this.domElement.classList)
+    }
     this.readButton.classList.toggle("readBtnHide")
     this.expandButton.textContent === "Click to Expand" ? this.expandButton.textContent = "Click to Collapse" : this.expandButton.textContent = "Click to Expand";
   }
