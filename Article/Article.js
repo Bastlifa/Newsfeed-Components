@@ -112,3 +112,59 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
 
 */
+
+class Article 
+{
+  constructor(article)
+  {
+    this.article = article;
+    this.title = article.title;
+    this.date = article.date;
+    this.firstParagraph = article.firstParagraph;
+    this.secondParagraph = article.secondParagraph;
+    this.thirdParagraph = article.thirdParagraph;
+    this.target = document.querySelector(".articles");
+  }
+  createArticle()
+  {
+    let articleDiv = document.createElement("div");
+    articleDiv.classList.add("article");
+    this.target.appendChild(articleDiv);
+
+    let titleH2 = document.createElement("h2");
+    titleH2.textContent = this.title;
+    articleDiv.appendChild(titleH2);
+
+    let dateP = document.createElement("p");
+    dateP.classList.add("date");
+    dateP.textContent = this.date;
+    articleDiv.appendChild(dateP)
+
+    let paragraph1 = document.createElement("p");
+    paragraph1.textContent = this.firstParagraph;
+    articleDiv.appendChild(paragraph1)
+    let paragraph2 = document.createElement("p");
+    paragraph2.textContent = this.secondParagraph;
+    articleDiv.appendChild(paragraph2)
+    let paragraph3 = document.createElement("p");
+    paragraph3.textContent = this.thirdParagraph;
+    articleDiv.appendChild(paragraph3)
+
+    let expandButton = document.createElement("span");
+    expandButton.classList.add("expandButton");
+    expandButton.textContent = "expand";
+    articleDiv.appendChild(expandButton);
+
+    expandButton.addEventListener("click", _ => 
+    {
+      articleDiv.classList.toggle("article-open")
+      expandButton.textContent === "expand" ? expandButton.textContent = "collapse" : expandButton.textContent = "expand";
+    })
+  }
+}
+
+articles = data.forEach(article => 
+{
+  let a = new Article(article)
+  a.createArticle();
+});
