@@ -149,41 +149,34 @@ const data = [
 
 */
 
-class Article 
-{
-  constructor(article)
+function Article (article)
   {
-    this.article = article;
-    this.title = article.title;
-    this.date = article.date;
-    this.firstParagraph = article.firstParagraph;
-    this.secondParagraph = article.secondParagraph;
-    this.thirdParagraph = article.thirdParagraph;
-    this.target = document.querySelector(".articles");
-  }
-  createArticle()
-  {
+    let title = article.title;
+    let date = article.date;
+    let firstParagraph = article.firstParagraph;
+    let secondParagraph = article.secondParagraph;
+    let thirdParagraph = article.thirdParagraph;
+    
     let articleDiv = document.createElement("div");
     articleDiv.classList.add("article");
-    this.target.appendChild(articleDiv);
 
     let titleH2 = document.createElement("h2");
-    titleH2.textContent = this.title;
+    titleH2.textContent = title;
     articleDiv.appendChild(titleH2);
 
     let dateP = document.createElement("p");
     dateP.classList.add("date");
-    dateP.textContent = this.date;
+    dateP.textContent = date;
     articleDiv.appendChild(dateP)
 
     let paragraph1 = document.createElement("p");
-    paragraph1.textContent = this.firstParagraph;
+    paragraph1.textContent = firstParagraph;
     articleDiv.appendChild(paragraph1)
     let paragraph2 = document.createElement("p");
-    paragraph2.textContent = this.secondParagraph;
+    paragraph2.textContent = secondParagraph;
     articleDiv.appendChild(paragraph2)
     let paragraph3 = document.createElement("p");
-    paragraph3.textContent = this.thirdParagraph;
+    paragraph3.textContent = thirdParagraph;
     articleDiv.appendChild(paragraph3)
 
     let expandButton = document.createElement("span");
@@ -207,13 +200,13 @@ class Article
       }
       expandButton.textContent === "expand" ? expandButton.textContent = "collapse" : expandButton.textContent = "expand";
     })
-  }
+    return articleDiv;
 }
+
 
 articles = data.forEach(article => 
 {
-  let a = new Article(article)
-  a.createArticle();
+  document.querySelector(".articles").appendChild(Article(article));
 });
 
 class ArticleForm
