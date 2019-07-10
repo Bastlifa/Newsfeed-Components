@@ -344,7 +344,6 @@ function articleForm()
     para2Input.value = ""
     para3Input.value = ""
     document.querySelector(".articles").appendChild(newArticle);
-    console.log('a')
   })
   form.appendChild(submitButton);
 

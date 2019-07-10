@@ -63,6 +63,19 @@ function menu(menuItems)
       TweenMax.from(menuDiv, .5, {x:0, onComplete: _ => menuDiv.classList.toggle("menu--open")});
     }
   })
+  document.addEventListener("click", function()
+  {
+    if (!Array.from(event.target.classList).includes("menu") && !Array.from(event.target.classList).includes("menu-button"))
+    {
+      
+      if(Array.from(menuDiv.classList).includes("menu--open") && !Array.from(event.target.parentNode.classList).includes("menu")
+      && !Array.from(event.target.parentNode.parentNode.classList).includes("menu"))
+      {
+        TweenMax.set(menuDiv, {x:-350});
+        TweenMax.from(menuDiv, .5, {x:0, onComplete: _ => menuDiv.classList.toggle("menu--open")});
+      }
+    }
+  })
   return menuDiv
 }
 
