@@ -181,7 +181,7 @@ function Article (article)
 
     let expandButton = document.createElement("span");
     expandButton.classList.add("expandButton");
-    expandButton.textContent = "expand";
+    expandButton.textContent = "Click to Expand";
     articleDiv.appendChild(expandButton);
 
     expandButton.addEventListener("click", _ => 
@@ -198,7 +198,7 @@ function Article (article)
         TweenMax.to(articleDiv, 0.7, {height: 50});
         articleDiv.classList.toggle("article-open")
       }
-      expandButton.textContent === "expand" ? expandButton.textContent = "collapse" : expandButton.textContent = "expand";
+      expandButton.textContent === "Click to Expand" ? expandButton.textContent = "Click to Close" : expandButton.textContent = "Click to Expand";
     })
     return articleDiv;
 }
