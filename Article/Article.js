@@ -193,7 +193,18 @@ class Article
 
     expandButton.addEventListener("click", _ => 
     {
-      articleDiv.classList.toggle("article-open")
+      if(!Array.from(articleDiv.classList).includes("article-open"))
+      {
+        TweenMax.set(articleDiv, {height: "auto"});
+        articleDiv.classList.toggle("article-open")
+        TweenMax.from(articleDiv, 0.7, {height: 50});
+      }
+      else
+      {
+        TweenMax.set(articleDiv, {height: "auto"});
+        TweenMax.to(articleDiv, 0.7, {height: 50});
+        articleDiv.classList.toggle("article-open")
+      }
       expandButton.textContent === "expand" ? expandButton.textContent = "collapse" : expandButton.textContent = "expand";
     })
   }
