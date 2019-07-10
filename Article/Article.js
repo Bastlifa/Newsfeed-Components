@@ -209,64 +209,148 @@ articles = data.forEach(article =>
   document.querySelector(".articles").appendChild(Article(article));
 });
 
-class ArticleForm
+function dateFix(dateArr)
 {
-  constructor()
+  let retStr;
+  let month;
+  switch(dateArr[1])
   {
-    let formSection = document.createElement("section");
-    formSection.classList.add("form-section");
-    document.querySelector("body").appendChild(formSection);
-
-
-    let form = document.createElement("form");
-    form.classList.add("article-form")
-    formSection.appendChild(form);
-
-    let titleP = document.createElement("p");
-    titleP.textContent = "Title:"
-    let titleInput = document.createElement("input");
-    titleInput.classList.add("article-title-input")
-    form.appendChild(titleP);
-    form.appendChild(titleInput);
-
-    let dateP = document.createElement("p");
-    dateP.textContent = "Date:";
-    let dateInput = document.createElement("input");
-    dateInput.classList.add("article-date-input");
-    dateInput.type = "date";
-    form.appendChild(dateP);
-    form.appendChild(dateInput);
-
-    let para1P = document.createElement("p");
-    para1P.textContent = "Paragraph 1:";
-    let para1Input = document.createElement("textarea");
-    para1Input.classList.add("para-text-area");
-    para1Input.classList.add("para1");
-    form.appendChild(para1P);
-    form.appendChild(para1Input);
-
-    let para2P = document.createElement("p");
-    para2P.textContent = "Paragraph 2:";
-    let para2Input = document.createElement("textarea");
-    para2Input.classList.add("para-text-area");
-    para2Input.classList.add("para2");
-    form.appendChild(para2P);
-    form.appendChild(para2Input);
-
-    let para3P = document.createElement("p");
-    para3P.textContent = "Paragraph 3:";
-    let para3Input = document.createElement("textarea");
-    para3Input.classList.add("para-text-area");
-    para3Input.classList.add("para3");
-    form.appendChild(para3P);
-    form.appendChild(para3Input);
-    form.appendChild(document.createElement("br"));
-
-    let submitButton = document.createElement("input")
-    submitButton.classList.add("article-submit");
-    submitButton.type = "submit"
-    form.appendChild(submitButton);
+    case "01":
+      month = "Jan"
+      break;
+    case "02":
+      month = "Feb"
+      break;
+    case "03":
+      month = "March"
+      break;
+    case "04":
+      month = "April"
+      break;
+    case "05":
+      month = "May"
+      break;
+    case "06":
+      month = "June"
+      break;
+    case "07":
+      month = "July"
+      break;
+    case "08":
+      month = "Aug"
+      break;
+    case "09":
+      month = "Sep"
+      break;
+    case "10":
+      month = "Oct"
+      break;
+    case "11":
+      month = "Nov"
+      break;
+    case "12":
+      month = "dec"
+      break;
+    default:
+      month = "January"
+      break;
   }
+  let dayNum = parseInt(dateArr[2]);
+  let daySuffix = "th";
+  if(dayNum < 10 || dayNum > 20)
+  {
+    let daySingles = dayNum%10;
+    if(daySingles === 2 || daySingles === 3)
+    {
+      daySuffix = "rd"
+    }
+    if(daySingles === 1)
+    {
+      daySuffix = "st"
+    }
+  }
+
+  retStr = `${month} ${dayNum}${daySuffix}, ${dateArr[0]}`;
+  return retStr;
 }
 
-let articleForm = new ArticleForm();
+function articleForm()
+{
+  let formSection = document.createElement("section");
+  formSection.classList.add("form-section");
+
+  let form = document.createElement("form");
+  form.classList.add("article-form")
+  formSection.appendChild(form);
+
+  let titleP = document.createElement("p");
+  titleP.textContent = "Title:"
+  let titleInput = document.createElement("input");
+  titleInput.classList.add("article-title-input")
+  form.appendChild(titleP);
+  form.appendChild(titleInput);
+
+  let dateP = document.createElement("p");
+  dateP.textContent = "Date:";
+  let dateInput = document.createElement("input");
+  dateInput.classList.add("article-date-input");
+  dateInput.type = "date";
+  form.appendChild(dateP);
+  form.appendChild(dateInput);
+
+  let para1P = document.createElement("p");
+  para1P.textContent = "Paragraph 1:";
+  let para1Input = document.createElement("textarea");
+  para1Input.classList.add("para-text-area");
+  para1Input.classList.add("para1");
+  form.appendChild(para1P);
+  form.appendChild(para1Input);
+
+  let para2P = document.createElement("p");
+  para2P.textContent = "Paragraph 2:";
+  let para2Input = document.createElement("textarea");
+  para2Input.classList.add("para-text-area");
+  para2Input.classList.add("para2");
+  form.appendChild(para2P);
+  form.appendChild(para2Input);
+
+  let para3P = document.createElement("p");
+  para3P.textContent = "Paragraph 3:";
+  let para3Input = document.createElement("textarea");
+  para3Input.classList.add("para-text-area");
+  para3Input.classList.add("para3");
+  form.appendChild(para3P);
+  form.appendChild(para3Input);
+  form.appendChild(document.createElement("br"));
+
+  let submitButton = document.createElement("input")
+  submitButton.classList.add("article-submit");
+  submitButton.type = "submit"
+  submitButton.addEventListener("click", _ =>
+  {
+    event.preventDefault();
+    let newArticle = Article(
+      {
+        title: titleInput.value,
+        date: dateFix(dateInput.value.split('-')),
+        firstParagraph: para1Input.value,
+        secondParagraph: para2Input.value,
+        thirdParagraph: para3Input.value
+      }
+    )
+    titleInput.value = ""
+    dateInput.value = ""
+    para1Input.value = ""
+    para2Input.value = ""
+    para3Input.value = ""
+    document.querySelector(".articles").appendChild(newArticle);
+    console.log('a')
+  })
+  form.appendChild(submitButton);
+
+  return formSection;
+}
+
+
+let articleFormEl = articleForm();
+document.querySelector("body").appendChild(articleFormEl);
