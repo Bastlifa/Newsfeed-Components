@@ -34,45 +34,40 @@ let menuItems = [
   
 */
 
-class Menu
+function menu(menuItems)
 {
-  constructor(menuItems)
-  {
-    this.menuItems = menuItems;
-  }
-  createMenu()
-  {
-    let menuDiv = document.createElement("div");
-    menuDiv.classList.add("menu");
-    let header = document.querySelector(".header");
-    header.parentNode.insertBefore(menuDiv, header.nextSibling);
+  let menuDiv = document.createElement("div");
+  menuDiv.classList.add("menu");
 
-    let menuUL = document.createElement("ul");
-    menuDiv.appendChild(menuUL);
-    this.menuItems.forEach(item => 
-    {
-      let tempItem = document.createElement("li");
-      tempItem.textContent = item;
-      menuUL.appendChild(tempItem);
-    })
+  let menuUL = document.createElement("ul");
+  menuDiv.appendChild(menuUL);
+  menuItems.forEach(item => 
+  {
+    let tempItem = document.createElement("li");
+    tempItem.textContent = item;
+    menuUL.appendChild(tempItem);
+  })
 
-    let menuButton = document.querySelector(".menu-button");
-    menuButton.addEventListener("click", _ =>
+  let menuButton = document.querySelector(".menu-button");
+  menuButton.addEventListener("click", _ =>
+  {
+    if(!Array.from(menuDiv.classList).includes("menu--open"))
     {
-      if(!Array.from(menuDiv.classList).includes("menu--open"))
-      {
-        menuDiv.classList.toggle("menu--open");
-        TweenMax.set(menuDiv, {x:0});
-        TweenMax.from(menuDiv, .5, {x:-350});
-      }
-      else
-      {
-        TweenMax.set(menuDiv, {x:-350});
-        TweenMax.from(menuDiv, .5, {x:0, onComplete: _ => menuDiv.classList.toggle("menu--open")});
-      }
-    })
-  }
+      menuDiv.classList.toggle("menu--open");
+      TweenMax.set(menuDiv, {x:0});
+      TweenMax.from(menuDiv, .5, {x:-350});
+    }
+    else
+    {
+      TweenMax.set(menuDiv, {x:-350});
+      TweenMax.from(menuDiv, .5, {x:0, onComplete: _ => menuDiv.classList.toggle("menu--open")});
+    }
+  })
+  return menuDiv
 }
 
-let menu = new Menu(menuItems);
-menu.createMenu();
+
+let menuEl = menu(menuItems);
+
+let header = document.querySelector(".header");
+header.parentNode.insertBefore(menuEl, header.nextSibling);
