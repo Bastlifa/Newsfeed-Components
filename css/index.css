@@ -76,6 +76,12 @@
 .article-open {
   height: 400px;
 }
+.article-form {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
 .menu-button {
   position: absolute;
   left: 20px;

@@ -215,3 +215,65 @@ articles = data.forEach(article =>
   let a = new Article(article)
   a.createArticle();
 });
+
+class ArticleForm
+{
+  constructor()
+  {
+    let formSection = document.createElement("section");
+    formSection.classList.add("form-section");
+    document.querySelector("body").appendChild(formSection);
+
+
+    let form = document.createElement("form");
+    form.classList.add("article-form")
+    formSection.appendChild(form);
+
+    let titleP = document.createElement("p");
+    titleP.textContent = "Title:"
+    let titleInput = document.createElement("input");
+    titleInput.classList.add("article-title-input")
+    form.appendChild(titleP);
+    form.appendChild(titleInput);
+
+    let dateP = document.createElement("p");
+    dateP.textContent = "Date:";
+    let dateInput = document.createElement("input");
+    dateInput.classList.add("article-date-input");
+    dateInput.type = "date";
+    form.appendChild(dateP);
+    form.appendChild(dateInput);
+
+    let para1P = document.createElement("p");
+    para1P.textContent = "Paragraph 1:";
+    let para1Input = document.createElement("textarea");
+    para1Input.classList.add("para-text-area");
+    para1Input.classList.add("para1");
+    form.appendChild(para1P);
+    form.appendChild(para1Input);
+
+    let para2P = document.createElement("p");
+    para2P.textContent = "Paragraph 2:";
+    let para2Input = document.createElement("textarea");
+    para2Input.classList.add("para-text-area");
+    para2Input.classList.add("para2");
+    form.appendChild(para2P);
+    form.appendChild(para2Input);
+
+    let para3P = document.createElement("p");
+    para3P.textContent = "Paragraph 3:";
+    let para3Input = document.createElement("textarea");
+    para3Input.classList.add("para-text-area");
+    para3Input.classList.add("para3");
+    form.appendChild(para3P);
+    form.appendChild(para3Input);
+    form.appendChild(document.createElement("br"));
+
+    let submitButton = document.createElement("input")
+    submitButton.classList.add("article-submit");
+    submitButton.type = "submit"
+    form.appendChild(submitButton);
+  }
+}
+
+let articleForm = new ArticleForm();
