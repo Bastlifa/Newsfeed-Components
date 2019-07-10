@@ -85,7 +85,43 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
-  }
+  },
+  {
+    title: 'Career Opportunities',
+    date: 'May 20th, 2019',
+    firstParagraph: `She is my queen. I do not want it. She is my queen. I do not want it. She is my queen. I do not want it. 
+          She is my queen. I do not want it. She is my queen. I do not want it. She is my queen. I do not want it. She is my queen. 
+          I do not want it. She is my queen. I do not want it. She is my queen. I do not want it. She is my queen. I do not want it. 
+          She is my queen. I do not want it. She is my queen. I do not want it.`,
+
+    secondParagraph: `She is my queen. I do not want it. She is my queen. I do not want it. She is my queen. I do not want it. 
+          She is my queen. I do not want it. She is my queen. I do not want it. She is my queen. I do not want it. She is my queen. 
+          I do not want it. She is my queen. I do not want it. She is my queen. I do not want it. She is my queen. I do not want it. 
+          She is my queen. I do not want it. She is my queen. I do not want it.`,
+
+    thirdParagraph: `She is my queen. I do not want it. She is my queen. I do not want it. She is my queen. I do not want it. 
+          She is my queen. I do not want it. She is my queen. I do not want it. She is my queen. I do not want it. She is my queen. 
+          I do not want it. She is my queen. I do not want it. She is my queen. I do not want it. She is my queen. I do not want it. 
+          She is my queen. I do not want it. She is my queen. I do not want it.`,
+  },
+  {
+    title: 'Digital Nomad',
+    date: 'May 22th, 2019',
+    firstParagraph: `Not all who wander are lost. Not all who wander are lost. Not all who wander are lost. Not all who wander are lost. 
+          Not all who wander are lost. Not all who wander are lost. Not all who wander are lost. Not all who wander are lost. 
+          Not all who wander are lost. Not all who wander are lost. Not all who wander are lost. Not all who wander are lost. 
+          Not all who wander are lost. Not all who wander are lost. Not all who wander are lost. Not all who wander are lost.`,
+
+    secondParagraph: `Not all who wander are lost. Not all who wander are lost. Not all who wander are lost. Not all who wander are lost. 
+          Not all who wander are lost. Not all who wander are lost. Not all who wander are lost. Not all who wander are lost. 
+          Not all who wander are lost. Not all who wander are lost. Not all who wander are lost. Not all who wander are lost. 
+          Not all who wander are lost. Not all who wander are lost. Not all who wander are lost. Not all who wander are lost.`,
+
+    thirdParagraph: `Not all who wander are lost. Not all who wander are lost. Not all who wander are lost. Not all who wander are lost. 
+          Not all who wander are lost. Some who wander are lost. Not all who wander are lost. Not all who wander are lost. 
+          Not all who wander are lost. Not all who wander are lost. Not all who wander are lost. Not all who wander are lost. 
+          Not all who wander are lost. Not all who wander are lost. Not all who wander are lost. Not all who wander are lost..`,
+  },
 ];
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
