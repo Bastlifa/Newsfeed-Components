@@ -59,8 +59,17 @@ class Menu
     let menuButton = document.querySelector(".menu-button");
     menuButton.addEventListener("click", _ =>
     {
-      menuDiv.classList.toggle("menu--open");
-      console.log('a')
+      if(!Array.from(menuDiv.classList).includes("menu--open"))
+      {
+        menuDiv.classList.toggle("menu--open");
+        TweenMax.set(menuDiv, {x:0});
+        TweenMax.from(menuDiv, .5, {x:-350});
+      }
+      else
+      {
+        TweenMax.set(menuDiv, {x:-350});
+        TweenMax.from(menuDiv, .5, {x:0, onComplete: _ => menuDiv.classList.toggle("menu--open")});
+      }
     })
   }
 }
